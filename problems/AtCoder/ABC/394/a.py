@@ -1,4 +1,3 @@
-# URL: https://atcoder.jp/contests/abc394/tasks/abc394_a
 def beside_2_delete(s: str) -> str:
     beside_2_index = [] # 2以外のインデックスを格納するリスト.
 
