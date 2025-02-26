@@ -1,4 +1,5 @@
-[# ABC394振り返り](https://atcoder.jp/contests/abc394/tasks)
+# ABC394振り返り
+[リンク](https://atcoder.jp/contests/abc394/tasks)
 ## A問題
 
 ### 解法メモ
