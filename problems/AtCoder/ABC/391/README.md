@@ -1,5 +1,5 @@
-# ABC392振り返り
-[リンク](https://atcoder.jp/contests/abc392/tasks)
+# ABC391振り返り
+[リンク](https://atcoder.jp/contests/abc391/tasks)
 ## A問題
 
 ### 解法メモ
