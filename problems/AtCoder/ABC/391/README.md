@@ -12,3 +12,29 @@
 
 ### 振り返り
 - 書いている時に気づけそうだった。悔しい。コーディング中も法則性を意識する!!!
+
+## B問題
+
+### 解法メモ
+総当たりかな。実装の方法が分からない。
+
+### 模範解答
+1. a,b を 1,...,N-M-1の範囲で全探索.
+2. a,b（左上）を固定し、それが条件に合うか2重ループにより判定.具体的にはi,j を1,...Mの範囲で全探索し,S a+i-1,b+j-1 ≠ T i,jとなるi,jが１つでも存在するか判定。そのようなi,jが存在しなければ、その時点で見ているa,bが答えとなる.
+```Python
+N, M = map(int, input().split())
+S = [input() for _ in range(N)]
+T = [input() for _ in range(M)]
+for a in range(N - M + 1):
+    for b in range(N - M + 1):
+        ok = True
+        for i in range(M):
+            for j in range(M):
+                if S[a + i][b + j] != T[i][j]:
+                    ok = False
+        if ok:
+            print(a + 1, b + 1)
+```
+
+### 振り返り
+- グリッドに対する全探索の方法を学べた.
