@@ -1,8 +1,18 @@
 N = int(input())
 
-for i in range(1, N):
-    for j in range(1, N):
-        #iが基数の時,黒.
-        if i % 2 == 0:
+target = [["?"]*N for _ in range(N)]
+
+for i in range(N):
+    j = N - i - 1
+    if i <= j:
+        for x in range(i, j+1):
+            for y in range(i, j+1):
+                if i % 2 == 0:
+                    target[x][y] = "#"
+                else:
+                    target[x][y] = "."
+
+for row in target:
+    print("".join(row))
             
 
