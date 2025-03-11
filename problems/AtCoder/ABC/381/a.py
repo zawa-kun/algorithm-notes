@@ -6,9 +6,9 @@ if N % 2 == 0:
     exit()
 
 middle = (N+1)//2
-if S[middle-1] != '/':
-    print("No")
-    exit()
+# if S[middle-1] != '/':
+#     print("No")
+#     exit()
 
 # check 1
 for i in range(middle-1):
