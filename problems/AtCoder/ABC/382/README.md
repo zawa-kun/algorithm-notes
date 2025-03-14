@@ -9,3 +9,41 @@
 **日本語でロジックを考える**
         **⇓**
 **プログラミング言語で書く**
+
+## B問題
+## 自分の解答
+1. 配列の最後から順番に要素を見ていく
+2. クッキーがあったら,Dを減らす。（クッキーを食べる回数はD回だから。
+3. そこまでの要素をappendでリスト(result)にappendしていく.
+4. 0~最後に食べたクッキーの番地までとresultを出力して終了.
+
+### 模範解答
+クッキーがあったら、「.」に置き変え、出力.
+```Python
+n, d = map(int, input().split())
+s = input()
+for i in range(d):
+    for j in range(n):
+        if s[n - 1 - j] == '@':
+            s = s[:n - 1 - j] + "." + s[n - j:]
+            break
+print(s)
+
+```
+
+### 振り返り
+**配列を最後の要素から見ていく方法**:
+```Python
+list = [1, 2, 3, 4, 5]
+len_list = len(list) #配列の長さ
+
+for i in range(len_list):
+        list[len_list - 1 - i] #これで配列の一番後ろからアクセスできる.
+```
+それ以外だとpop()等.
+
+**文字列型をリスト型に変換する方法**
+```Python
+S = "abcdefg"
+list(S)
+```
