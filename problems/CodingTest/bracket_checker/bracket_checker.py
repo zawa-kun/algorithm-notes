@@ -15,7 +15,8 @@ def bracket_checker(s):
             check.append("]")
         # 閉じ括弧確認.
         # 処理終了の条件
-        # ・終わり括弧が出てきたのに、checkに
+        # ・終わり括弧が出てきたのに、checkに一致する終わり括弧がない.
+        # ・終わり括弧が出てきたのに、checkに何もない.
         elif s[i] == ")":
             if len(check) == 0 or ")" not in check: 
                 print("No") 
