@@ -1,22 +1,17 @@
-s = [int(i) for i in input()]
+S = list(input())
+
 count = 0 # ボタンを押す回数.
-zero_flag = False # zeroの個数を管理するフラグ.
+flag = False # 0が連続しているかどうかを管理するフラグ.
 
-while len(s) != 0:
-    count += 1
-
-    # "00"か"0"の判断.
-    if zero_flag:
-        if s[-1] ==  0:
-            zero_flag = False
+for i in range(len(S)):
+    if S[i] == "0":
+        if flag:
+            flag = False
         else:
-            zero_flag = False
-            count -= 1
-    # if s[-1] == 0 and zero_flag == False:
-    #     zero_flag = True
-
-    print("要素:",s[-1],"count:", count, "zero_flag", zero_flag)
-    s.pop() # 配列の最後を取り出す.
+            flag = True
+            count += 1
+    else:
+        count += 1
+        flag = False
 
 print(count)
-    
