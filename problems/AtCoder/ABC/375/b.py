@@ -6,13 +6,14 @@ if __name__ == "__main__":
     G = [list(map(int, input().split())) for _ in range(N)]
 
     total_distance = 0
-    for i in range(N):
-        # 原点から最初の座標の移動距離を加算
-        if i == 0:
-            total_distance += calculate_distance(0, 0, G[i][0], G[i][1])
-            continue
-        # 前の座標からの移動距離を加算
+
+    # 原点から最初の座標の移動距離を加算
+    total_distance += calculate_distance(0, 0, G[0][0], G[0][1])
+
+    # 前の座標からの移動距離を加算
+    for i in range(1,N):
         total_distance += calculate_distance(G[i-1][0], G[i-1][1],G[i][0], G[i][1])
+    
     # 最後の座標から原点の移動距離を加算
     total_distance += calculate_distance(G[i][0], G[i][1], 0, 0)
     
