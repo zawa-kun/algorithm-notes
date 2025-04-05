@@ -5,21 +5,45 @@ for i in range(20):
         print(1)
         print(i)
         exit()
-
+    
     if 3 ** i  > M:
-        A = []
-        A.append(i-1)
-        while len(A) < i:
-            A_idx = 0
-            M -= 3 ** A[A_idx]
-            # 3^i をMから引いていきMが負の数になるときのiのi-1をAにアペンドし、繰り返していき、
-            # もし配列の長さがiを上回ったらこのnに満たすnは存在しないことになる。
+        A = [0] * i
+        A_idx = 0
+        # A[A_idx] = i-1
+        nokori = M
+        while A_idx < i and nokori > 0:
             for A_kouho in range(i):
-                if M - 3 ** A_kouho == 0:
-                    A.append(A_kouho)
+                if nokori - 3 ** A_kouho == 0:
+                    A[A_idx] = A_kouho
                     # output result
                     print(i)
-                    print(*A, sep=' ') 
-                elif M - 3 ** A_kouho < 0 :
-                    A.append(A_kouho)
+                    A = A[:A_idx+1]
+                    print(*A, sep=' ')
+                    exit()
+                elif nokori - 3 ** A_kouho > 0 :
+                    A[A_idx] = A_kouho
+
+            nokori -= 3 ** A[A_idx]
             A_idx += 1
+
+    # if 3 ** i  > M:
+    #     A = [0] * i
+    #     A_idx = 0
+    #     A[A_idx] = i-1
+    #     nokori = M
+    #     # nokori = M - 3 ** i-1 
+    #     while A_idx < i - 1 and nokori > 0:
+            
+    #         nokori -= 3 ** A[A_idx]
+    #         for A_kouho in range(i):
+    #             if nokori - 3 ** A_kouho == 0:
+    #                 A[A_idx+1] = A_kouho
+    #                 # output result
+    #                 print(i)
+    #                 print(*A, sep=' ')
+    #                 exit()
+    #             elif nokori - 3 ** A_kouho > 0 :
+    #                 A[A_idx+1] = A_kouho
+
+    #         A_idx += 1
+            
