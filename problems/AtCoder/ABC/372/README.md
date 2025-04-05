@@ -1,5 +1,5 @@
-# ABC373振り返り
-[リンク](https://atcoder.jp/contests/abc373/tasks)
+# ABC372振り返り
+[リンク](https://atcoder.jp/contests/abc372/tasks)
 ## B問題
 
 ### 解法メモ
