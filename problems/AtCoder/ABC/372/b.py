@@ -1,6 +1,6 @@
 M = int(input())
 
-for i in range(20):
+for i in range(1,21):
     if 3 ** i  == M:
         print(1)
         print(i)
@@ -16,8 +16,8 @@ for i in range(20):
                 if nokori - 3 ** A_kouho == 0:
                     A[A_idx] = A_kouho
                     # output result
-                    print(i)
                     A = A[:A_idx+1]
+                    print(len(A))
                     print(*A, sep=' ')
                     exit()
                 elif nokori - 3 ** A_kouho > 0 :
