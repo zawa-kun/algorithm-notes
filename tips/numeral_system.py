@@ -6,28 +6,22 @@ def convert_to_binary_number(num: int) -> str:
     binary_number = ''
     while num >= 2:
         binary_number += str(num % 2)
-        if num % 2 == 0:
-            num //= 2
-        else:
-            num = (num - num % 2) // 2
+        num //= 2
     
     binary_number += str(num)
     binary_number = binary_number[::-1]
 
     return binary_number
 
-# 10進数 -> n進数
+# 10進数 -> n進数 (nは1~10)
 def convert_to_n_number(num: int, numeral: int) -> str:
     if num == 0:
         return '0'
     
     binary_number = ''
     while num >= numeral:
-        binary_number += str(num % numeral)
-        if num % numeral == 0:
-            num //= numeral
-        else:
-            num = (num - num % numeral) // numeral
+        binary_number += str(num % numeral) 
+        num //= numeral
     
     binary_number += str(num)
     binary_number = binary_number[::-1]
