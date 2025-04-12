@@ -1,20 +1,19 @@
 S = input()
-fix = []
-for i, s in enumerate(S):
-    if i % 2 == 1 and s != 'o':
-        fix.append(i)
-    elif i % 2 == 0 and s != 'i':
-        fix.append(i)
 
-if len(fix) == 0:
-    if len(S) % 2 == 0:
-        print(0)
-        exit()
-    else:
-        print(1)
-        exit()
+original_length = len(S)
+i = 0
+while i != len(S):
+    if i % 2 == 0: # 偶数番目
+        if S[i] == 'o':
+            S = S[:i] + 'i' + S[i:]
+            i += 1
 
-if len(fix) + len(S) % 2 == 1:
-    print(len(fix) + 1)
-else:
-    print(len(fix))
+    else: # 奇数番目
+        if S[i] == 'i':
+            S = S[:i] + 'o' + S[i:]
+            i += 1
+    i += 1
+
+if len(S) % 2 == 1:
+    S += 'o'
+print(len(S) - original_length)
