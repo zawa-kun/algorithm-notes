@@ -1,22 +1,12 @@
-S = input()
+S = str(input())
+alpha_map = [0] * 26
 
-A_idx = S.find('A')
-Z_idx = S.find('Z')
+distance = 0
+# 各文字の位置を格納
+for i in range(len(S)):
+    alpha_map[ord(S[i]) - ord('A')] = i 
 
-total = 0
-if A_idx < Z_idx:
-    for i in range(A_idx, Z_idx):
-        total += abs((ord(S[i+1])-ord('A')) - (ord(S[i])-ord('A')))
-else:
-    # only right ver
-    # S = S[A_idx:] + S[:Z_idx+1] 
-    # print(S)
-    S = S[:A_idx+1]
-    S_reversed = ''.join(list(reversed(S)))
-    print(S_reversed)
-    A_idx = S_reversed.find('A')
-    Z_idx = S_reversed.find('Z')
-    for i in range(A_idx, Z_idx):
-        total += abs((ord(S_reversed[i+1])-ord('A')) - (ord(S_reversed[i])-ord('A')))
-
-print(total)
+# 距離計算
+for i in range(1, len(alpha_map)):
+    distance += abs(alpha_map[i] - alpha_map[i-1])
+print(distance)
