@@ -1,5 +1,4 @@
-print(ord('0'))
-print(ord('1'))
-
+print(ord('z'))
+print(ord('A'))
 
 
