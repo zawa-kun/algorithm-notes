@@ -3,6 +3,10 @@ qr = [list(map(int, input().split())) for _ in range(N)] # ゴミの分別表
 Q = int(input())
 td = [list(map(int, input().split())) for _ in range(Q)] # d日にtのゴミが出る
 
+'''
+x = q * k + r かつ x >= d
+となるような探す。
+'''
 for i in range(Q):
     trash = td[i][0] - 1 # ゴミの種類
     day = td[i][1] # この日以降
