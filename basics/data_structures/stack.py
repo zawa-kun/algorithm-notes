@@ -1,3 +1,5 @@
+from typing import Any
+
 class Stack(object):
     
     def __init__(self) -> None:
@@ -6,8 +8,9 @@ class Stack(object):
     def push(self, data) -> None:
         self.stack.append(data)
     
-    def pop(self) -> None:
-        self.stack.pop()
+    def pop(self) -> Any:
+        if self.stack:
+            return self.stack.pop()
     
     def print(self) -> None:
         reversed_stack = reversed(self.stack)
@@ -21,6 +24,6 @@ if __name__ == "__main__":
     stack.push(10)
     stack.push(5)
     stack.print()
-    stack.pop()
+    print(stack.pop())
     print('-----pop-----')
     stack.print()
