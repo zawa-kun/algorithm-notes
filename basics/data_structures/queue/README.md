@@ -1,0 +1,5 @@
+キューはpythonの標準ライブラリの
+collection.dequeueがある
+
+
+性能的にも非常に優れている
