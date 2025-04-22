@@ -5,31 +5,28 @@ def get_max_vocab_length(vocabs: List[str]) -> int:
     max_len = -1
     for vocab in vocabs:
         if max_len < len(vocab):
-            max_len = len(vocabs)
+            max_len = len(vocab)
     
     return max_len + 1
-        
-def solution(N: int, vocabs: List[str]) -> None:
+
+
+def solution(vocabs: List[str]) -> None:
     max_len = get_max_vocab_length(vocabs)
-    G = [list(str())*len(vocabs) for _ in range(max_len)]
-    # y = len(vocabs)
+    G = [['*']*len(vocabs) for _ in range(max_len)]
+    y = len(vocabs) - 1
     for i in range(len(vocabs)): # tanngo
         x = 0
-        for j in range(max_len): # moji
+        for j in range(len(vocabs[i])): # moji
             if len(vocabs[i]) > j:
-                G[x].append(vocabs[i][j])
-            elif max_len - i  - 1 == j :
-                G[x].append("*")
+                G[x][y] = vocabs[i][j]
             x += 1
-    
-    print(G)
-    
+        y -= 1
 
-    # 詰め込んでいって、最後にアスタリスク追加。
-
+    print(''.join(G[i]))
+    
     
 
 if __name__ == '__main__':
     N = int(input())
     vocabs = [str(input()) for _ in range(N)]
-    solution(N, vocabs)
+    solution(vocabs)
