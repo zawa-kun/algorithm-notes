@@ -40,6 +40,31 @@ def search(node: Node, value: int) -> bool:
     else:
         return search(node.right, value)
 
+def min_value(node: Node) -> Node:
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current
+
+def remove(node: Node, value: int) -> None:
+    if node is None:
+        return node
+    
+    if value < node.value: # 小さければ左側を見ていく
+        node.left = remove(node.left, value)
+    elif value > node.value: # 大きければ右側を見ていく
+        node.right = remove(node.right, value)
+    else: # valueと要素が一致したとき
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+    
+        temp = min_value(node.right)
+        node.value = temp.value
+        node.right = remove(node.right, temp.value) # 右側にあるものを移動させていく。
+
+    return node
 
 
 if __name__ == '__main__':
@@ -51,10 +76,7 @@ if __name__ == '__main__':
     root = insert(root, 1)
     root = insert(root, 10)
     root = insert(root, 2)
-    # inorder(root)
-    print(search(root, 10))
-    print(search(root, 11))
-    # print(root.value)               # 3
-    # print(root.right.value)         # 6
-    # print(root.right.left.value)    # 5
-    
+    inorder(root)
+    print('###################')
+    root = remove(root, 6)
+    inorder(root)
