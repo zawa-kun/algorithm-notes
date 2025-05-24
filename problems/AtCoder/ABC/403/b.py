@@ -1,15 +1,19 @@
-T = str(input()) # ?moji
-U = str(input()) # hirabun
+T = str(input())
+U = str(input())
 
-T_len = len(T)
-U_len = len(U)
-j = 0
+T_length = len(T)
+U_length = len(U)
 
-for i in range(len(U)):
-    while len(T) - i - 1 > 0:
-        print('T[j]:', T[j], "U[i]", U[i])
-        if U[i] == T[j] or T[j] == '?':
-            break
-        j += 1
-    print('--------next----------')
+for ti in range(T_length):
+    if T[ti] == "?" or T[ti] == U[0]:
+        if T_length - ti < U_length:
+            print("No")
+            exit()
 
+        flag = True
+        for ui in range(U_length):
+            if T[ti+ui] != U[ui] and T[ti+ui] != "?":
+                flag = False # T[ti+ui]がU[ui]でも?でも無いとき
+        if flag:
+            print("Yes")
+            exit()
