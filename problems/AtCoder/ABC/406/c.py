@@ -2,12 +2,12 @@ N = int(input())
 P = list(map(int, input().split()))
 
 # P から大小関係の文字列 S を作る
-S = ""
+S = []
 for i in range(N-1):
     if P[i] < P[i+1]:
-        S += "<"
+        S.append("<")
     else:
-        S += ">"
+        S.append(">")
 
 # ランレングス圧縮（RLE）
 RLE_S = []
