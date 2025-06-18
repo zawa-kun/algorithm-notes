@@ -1,5 +1,9 @@
 N, M = map(int, input().split())
-G = [list(map(int, input().split())) for _ in range(M)] # 食材表
+G = [] # 食材表
+for _ in range(M):
+    row = list(map(int, input().split()))
+    G.append(row[1:]) # 「1個目以降」を格納
+
 B = list(map(int, input().split())) # i日目にi番目の材料を克服
 result = 0 # 食べれる料理数
 cnt = [0] * M # cnt[i] : 料理iに含まれる「まだ苦手な食材」
