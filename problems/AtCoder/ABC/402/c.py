@@ -1,17 +1,18 @@
 N, M = map(int, input().split())
 G = [list(map(int, input().split())) for _ in range(M)] # 食材表
 B = list(map(int, input().split())) # i日目にi番目の材料を克服
+result = 0 # 食べれる料理数
+cnt = [0] * M # cnt[i] : 料理iに含まれる「まだ苦手な食材」
+idx = [[] for _ in range(N)] # idx[x] : 食材iが含まれる料理のインデックスのリスト
 
-ingredients = [set()]*M # 材料の分布
-for i in range(M):
-    ingredients[i] = set(G[i])
+for i, dish in enumerate(G): 
+    cnt[i] = len(dish)
+    for ingredient in dish:
+        idx[ingredient-1].append(i)
 
-for i in range(len(B)):
-    # 苦手克服した食べ物を削除
-    cnt = 0
-    for j in range(len(ingredients)):
-        ingredients[j].discard(B[i])
-        if len(ingredients[j]) == 0:
-            cnt += 1
-
-    print(cnt)
+for i in range(len(B)): # 1...N日目まで見ていく
+    for v in idx[B[i]-1]: # 克服した野菜が入っている料理のリストを取り出す。
+        cnt[v] -= 1 # 一つ克服したのでデクリメント
+        if cnt[v] == 0: # カウント０つまり、苦手なものが一つも入っていないという事
+            result += 1 # 食べれるものが一つ増える。
+    print(result)
