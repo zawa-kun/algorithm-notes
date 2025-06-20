@@ -1,0 +1,1 @@
+### ボールの価値最大化問題[ABC396-C](https://atcoder.jp/contests/abc396/tasks/abc396_c)
