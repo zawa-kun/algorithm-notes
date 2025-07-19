@@ -126,3 +126,70 @@ if __name__ == "__main__":
 #### AtCoderでの使い道
 「最短経路」や「最短手数の移動といった問題でBFSが非常に頻繁に使われる」
 - 最小何歩でゴールにたどり着けるかはBFSの典型的な応用例
+
+---
+
+## Union-Find（素集合データ構造）
+※グラフアルゴリズムというよりはデータ構造！
+
+要素をいくつかの互いに素な集合に分割し、以下の２つの操作を効率的に行うためのデータ構造
+
+- **Union(結合)** : ２つの要素が含まれる集合を結合
+- **Find(探索)** : ある要素がどの集合に属しているかを探索
+
+### Union-Findのイメージ
+あるクラスの担任だとして、生徒たちをグループ分けする。
+
+この時
+- Find：「Ａさんはどのグループ？」と聞かれたら、すぐにその代表者を答える
+- Union : 「ＢさんとＣさんを同じグループにして」と言われたとき、別々のグループであれば、その２つのグループを１つに結合。
+
+
+### 実装
+- `parent`配列：各要素の親を記録
+- `rank`(または`size`)配列：木の深さを調整を効率化を図る
+
+上記の二つを使い、実装
+
+```Python
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))    # parent[i] : 要素iの親(初期状態は自分自身が親[0, 1, 2....n-1])
+        self.size = [1] * n             # size[i] : iが根であるときの集合のサイズ(初期状態サイズ１（全て独立しているため)
+    
+    # 要素x の根を検索
+    def find(self, x):
+        # x自身が根であるとき, x自身を返す
+        if self.parent[x] == x: 
+            return x
+
+        # 経路圧縮：根に直接つなぎ直す
+        self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    # 要素xとyが含まれる集合を結合する
+    # Union by Size (またはRank)により高速化
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+
+        # 異なる集合に属していれば結合
+        if root_x != root_y:
+            # サイズの小さい方を大きい方につなげることで木の深さを抑える
+            if self.size[root_x] < self.size[root_y]:
+                root_x, root_y = root_y, root_x # root_x を大きい方にそろえる
+
+            self.parent[root_y] = root_x
+            self.size[root_x] += self.size[root_y]
+            return True
+        return False
+    
+    def is_same_set(self, x, y):
+        return self.find(x) == self.find(y)
+    
+    # 要素xが属する集合のサイズを返す
+    def get_size(self, x):
+        return self.size[self.find(x)]
+```
+
+
